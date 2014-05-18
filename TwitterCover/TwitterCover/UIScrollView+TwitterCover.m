@@ -109,9 +109,18 @@ static char UIScrollViewTwitterCover;
 {
     CGFloat factor = 0.1;
     [blurImages_ addObject:self.image];
-    for (NSUInteger i = 0; i < 20; i++) {
-        [blurImages_ addObject:[self.image boxblurImageWithBlur:factor]];
-        factor+=0.04;
+    
+    @try {
+        for (NSUInteger i = 0; i < 20; i++) {
+            [blurImages_ addObject:[self.image boxblurImageWithBlur:factor]];
+            factor+=0.04;
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@", exception);
+    }
+    @finally {
+        return;
     }
 }
 
