@@ -73,10 +73,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.tableView addTwitterCoverWithImage:[UIImage imageNamed:@"cover.png"] withTopView:topView];
+    NSData *imageAlbumArtData = [NSData dataWithContentsOfURL: [NSURL URLWithString: @"http://a4.mzstatic.com/us/r30/Music/6a/e2/97/mzi.uckiwjzv.400x400-75.jpg"]];
+    UIImage *imageHeader = [UIImage imageWithData:imageAlbumArtData];
+    
+    
+    [self.tableView addTwitterCoverWithImage:imageHeader withTopView:nil];
     
     //This tableHeaderView plays the placeholder role here.
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, CHTwitterCoverViewHeight + topView.bounds.size.height)];
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, CHTwitterCoverViewHeight)];
+    
 }
 
 
